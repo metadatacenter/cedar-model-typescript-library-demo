@@ -1,6 +1,6 @@
-import { CedarTextField, CedarWriters, JSONFieldWriter } from 'cedar-model-typescript-library';
+import { TextField, CedarWriters, JSONFieldWriter } from 'cedar-model-typescript-library';
 
-const field: CedarTextField = CedarTextField.buildEmptyWithDefaultValues();
+const field: TextField = TextField.buildEmptyWithDefaultValues();
 
 const writers: CedarWriters = CedarWriters.getStrict();
 const jsonWriter: JSONFieldWriter = writers.getJSONFieldWriterForField(field);

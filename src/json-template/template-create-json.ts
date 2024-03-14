@@ -1,6 +1,6 @@
-import { CedarTemplate, CedarWriters, JSONTemplateWriter } from 'cedar-model-typescript-library';
+import { Template, CedarWriters, JSONTemplateWriter } from 'cedar-model-typescript-library';
 
-const template: CedarTemplate = CedarTemplate.buildEmptyWithDefaultValues();
+const template: Template = Template.buildEmptyWithDefaultValues();
 
 const writers: CedarWriters = CedarWriters.getStrict();
 const jsonWriter: JSONTemplateWriter = writers.getJSONTemplateWriter();

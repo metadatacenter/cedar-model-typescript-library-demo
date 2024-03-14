@@ -1,8 +1,8 @@
 import {
   CedarBuilders,
-  CedarTextField,
+  TextField,
   TextFieldBuilder,
-  CedarDate,
+  ISODate,
   JsonNode,
   SchemaVersion,
   CedarWriters,
@@ -10,8 +10,8 @@ import {
 } from 'cedar-model-typescript-library';
 
 const builder: TextFieldBuilder = CedarBuilders.textFieldBuilder();
-const now = CedarDate.now();
-const field: CedarTextField = builder
+const now = ISODate.now();
+const field: TextField = builder
   .withAtId('https://repo.metadatacenter.org/template-fields/f38b5ef4-a078-4d82-90c0-a9a721ad5ecf')
   .withTitle('Text field title')
   .withDescription('Text field description')
