@@ -20,7 +20,10 @@ npm link cedar-model-typescript-library
 
 Run one of the files:
 ```shell
-npx ts-node src/json-template/template-read-json.ts
-npx ts-node src/json-template/template-create-json.ts
+npx ts-node src/json-field/field-builder-json.ts
 npx ts-node src/json-field/field-create-json.ts
+
+npx ts-node src/json-template/template-create-json.ts
+npx ts-node src/json-template/template-read-json.ts
+npx ts-node src/json-template/template-with-fields-json
 ```
