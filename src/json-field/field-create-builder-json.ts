@@ -6,7 +6,7 @@ import {
   JsonNode,
   SchemaVersion,
   CedarWriters,
-  JSONFieldWriter,
+  JSONTemplateFieldWriter,
 } from 'cedar-model-typescript-library';
 
 const builder: TextFieldBuilder = CedarBuilders.textFieldBuilder();
@@ -34,7 +34,7 @@ const field: TextField = builder
   .build();
 
 const writers: CedarWriters = CedarWriters.getStrict();
-const jsonWriter: JSONFieldWriter = writers.getJSONFieldWriterForField(field);
+const jsonWriter: JSONTemplateFieldWriter = writers.getJSONFieldWriterForField(field);
 
 const fieldSerialized = jsonWriter.getAsJsonString(field);
 console.log('Serialized field as JSON string, length               : ' + fieldSerialized.length);

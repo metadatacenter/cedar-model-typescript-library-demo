@@ -15,12 +15,12 @@ const template = jsonTemplateReaderResult.template;
 const writers: CedarWriters = CedarWriters.getStrict();
 const jsonWriter: JSONTemplateWriter = writers.getJSONTemplateWriter();
 
-const templateReserialized = jsonWriter.getAsJsonString(template);
+const templateReSerialized = jsonWriter.getAsJsonString(template);
 console.log('Original template as JSON string, length      : ' + templateSource.length);
-console.log('Reserialized template as JSON string, length  : ' + templateReserialized.length);
+console.log('ReSerialized template as JSON string, length  : ' + templateReSerialized.length);
 
 const compareResult = JSONTemplateReader.getRoundTripComparisonResult(jsonTemplateReaderResult, jsonWriter);
-console.log('Roundtrip comparison difference count (exp. 3): ', compareResult.getBlueprintComparisonErrorCount());
+console.log('RoundTrip comparison difference count (exp. 3): ', compareResult.getBlueprintComparisonErrorCount());
 
-console.log('Roundtrip comparison differences: ');
+console.log('RoundTrip comparison differences: ');
 console.log(JSON.stringify(compareResult.getBlueprintComparisonErrors(), null, 2));
