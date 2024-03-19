@@ -1,13 +1,13 @@
 import {
-  Template,
-  CedarWriters,
-  JSONTemplateWriter,
-  TemplateBuilder,
-  ISODate,
-  TextFieldBuilder,
-  TextField,
-  SchemaVersion,
   CedarBuilders,
+  CedarWriters,
+  ISODate,
+  JSONTemplateWriter,
+  SchemaVersion,
+  Template,
+  TemplateBuilder,
+  TextField,
+  TextFieldBuilder,
 } from 'cedar-model-typescript-library';
 
 const now = ISODate.now();
@@ -35,13 +35,24 @@ const textField: TextField = textFieldBuilder
   .withValueRecommendationEnabled(true)
   .build();
 
+const textFieldDeploymentBuilder = CedarBuilders.childDeploymentBuilder(textField, '_text_field')
+  .withIri('https://schema.metadatacenter.org/properties/fac2de3a-937e-4573-810a-c1653e658cde')
+  .withLabel('Text field property label')
+  .withDescription('Text field property description')
+  .withMultiInstance(true)
+  .withMinItems(0)
+  .withMaxItems(123)
+  .withRequiredValue(true)
+  .withHidden(true);
+const textFieldDeployment = textFieldDeploymentBuilder.build();
+
 const templateBuilder: TemplateBuilder = CedarBuilders.templateBuilder();
 const template: Template = templateBuilder
   .withCreatedOn('2024-03-12T10:03:57-07:00')
   .withCreatedBy('https://metadatacenter.org/users/c7dcc3ca-55fe-4ca8-b448-ab110bfe4c95')
   .withLastUpdatedOn(now)
   .withModifiedBy('https://metadatacenter.org/users/c7dcc3ca-55fe-4ca8-b448-ab110bfe4c99')
-  .addChild(textField)
+  .addChild(textField, textFieldDeployment)
   .build();
 
 const writers: CedarWriters = CedarWriters.getStrict();

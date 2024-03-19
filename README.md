@@ -8,9 +8,8 @@ Clone the [repo](https://github.com/metadatacenter/cedar-model-typescript-librar
 
 ```shell
 npm install
-tsc
-cd dist
-npm link
+npm run build
+npm run link
 ```
 Then in this project you will use the project through a symlink:
 ```shell
@@ -20,8 +19,8 @@ npm link cedar-model-typescript-library
 
 Run one of the files:
 ```shell
-npx ts-node src/json-field/field-builder-json.ts
-npx ts-node src/json-field/field-create-json.ts
+npx ts-node src/json-field/field-create-builder-json.ts
+npx ts-node src/json-field/field-create-default-json.ts
 
 npx ts-node src/json-template/template-create-json.ts
 npx ts-node src/json-template/template-read-json.ts
