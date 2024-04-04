@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { JSONTemplateReader } from 'cedar-model-typescript-library';
+import { CedarJSONWriters, JSONTemplateReader, RoundTrip } from 'cedar-model-typescript-library';
 import { CedarWriters } from 'cedar-model-typescript-library';
 import { JSONTemplateWriter } from 'cedar-model-typescript-library';
 
@@ -12,14 +12,14 @@ const jsonTemplateReaderResult = reader.readFromString(templateSource);
 console.log('Parsing error count                           : ' + jsonTemplateReaderResult.parsingResult.getBlueprintComparisonErrorCount());
 const template = jsonTemplateReaderResult.template;
 
-const writers: CedarWriters = CedarWriters.getStrict();
+const writers: CedarJSONWriters = CedarWriters.json().getStrict();
 const jsonWriter: JSONTemplateWriter = writers.getJSONTemplateWriter();
 
 const templateReSerialized = jsonWriter.getAsJsonString(template);
 console.log('Original template as JSON string, length      : ' + templateSource.length);
 console.log('ReSerialized template as JSON string, length  : ' + templateReSerialized.length);
 
-const compareResult = JSONTemplateReader.getRoundTripComparisonResult(jsonTemplateReaderResult, jsonWriter);
+const compareResult = RoundTrip.compare(jsonTemplateReaderResult, jsonWriter);
 console.log('RoundTrip comparison difference count (exp. 3): ', compareResult.getBlueprintComparisonErrorCount());
 
 console.log('RoundTrip comparison differences: ');

@@ -1,5 +1,6 @@
 import {
   CedarBuilders,
+  CedarJSONWriters,
   CedarWriters,
   ISODate,
   JSONTemplateWriter,
@@ -55,7 +56,7 @@ const template: Template = templateBuilder
   .addChild(textField, textFieldDeployment)
   .build();
 
-const writers: CedarWriters = CedarWriters.getStrict();
+const writers: CedarJSONWriters = CedarWriters.json().getStrict();
 const jsonWriter: JSONTemplateWriter = writers.getJSONTemplateWriter();
 
 const templateSerialized = jsonWriter.getAsJsonString(template);

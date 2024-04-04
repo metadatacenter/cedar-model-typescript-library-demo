@@ -3,31 +3,27 @@ module.exports = {
     browser: true,
     es2022: true,
   },
-  extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-  ],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
   overrides: [
     {
       env: {
         node: true,
       },
-      files: [".eslintrc.{js,cjs}"],
+      files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
-        sourceType: "script",
+        sourceType: 'script',
       },
     },
   ],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
-  plugins: ["@typescript-eslint", "prettier"],
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    "@typescript-eslint/object-curly-spacing": ["error", "always"],
-    "prettier/prettier": "error",
-    "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+    '@typescript-eslint/object-curly-spacing': ['error', 'always'],
+    'prettier/prettier': 'error',
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
   },
 };

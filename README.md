@@ -26,3 +26,13 @@ npx ts-node src/json-template/template-create-json.ts
 npx ts-node src/json-template/template-read-json.ts
 npx ts-node src/json-template/template-with-fields-json
 ```
+
+Running the validator:
+```shell
+node dist/validator/json-validator.js src/json-template/template.json
+npx ts-node src/validator/json-validator.ts src/json-template/template.json
+
+node dist/validator/json-validator.js src/json-field/field.json
+npx ts-node src/validator/json-validator.ts src/json-field/field.json
+
+```

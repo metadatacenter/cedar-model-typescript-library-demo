@@ -7,6 +7,7 @@ import {
   SchemaVersion,
   CedarWriters,
   JSONTemplateFieldWriter,
+  CedarJSONWriters,
 } from 'cedar-model-typescript-library';
 
 const builder: TextFieldBuilder = CedarBuilders.textFieldBuilder();
@@ -33,7 +34,7 @@ const field: TextField = builder
   .withValueRecommendationEnabled(true)
   .build();
 
-const writers: CedarWriters = CedarWriters.getStrict();
+const writers: CedarJSONWriters = CedarWriters.json().getStrict();
 const jsonWriter: JSONTemplateFieldWriter = writers.getJSONFieldWriterForField(field);
 
 const fieldSerialized = jsonWriter.getAsJsonString(field);

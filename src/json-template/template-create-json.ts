@@ -1,8 +1,8 @@
-import { Template, CedarWriters, JSONTemplateWriter } from 'cedar-model-typescript-library';
+import { Template, CedarWriters, JSONTemplateWriter, CedarJSONWriters } from 'cedar-model-typescript-library';
 
 const template: Template = Template.buildEmptyWithDefaultValues();
 
-const writers: CedarWriters = CedarWriters.getStrict();
+const writers: CedarJSONWriters = CedarWriters.json().getStrict();
 const jsonWriter: JSONTemplateWriter = writers.getJSONTemplateWriter();
 
 const templateSerialized = jsonWriter.getAsJsonString(template);
