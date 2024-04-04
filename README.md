@@ -24,7 +24,9 @@ npx ts-node src/json-field/field-create-default-json.ts
 
 npx ts-node src/json-template/template-create-json.ts
 npx ts-node src/json-template/template-read-json.ts
-npx ts-node src/json-template/template-with-fields-json
+npx ts-node src/json-template/template-with-fields-json.ts
+
+npx ts-node src/for-demo/reading-a-template.ts
 ```
 
 Running the validator:
