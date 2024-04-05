@@ -1,10 +1,10 @@
-import { TextField, CedarWriters, JSONTemplateFieldWriter, CedarJSONWriters } from 'cedar-model-typescript-library';
+import { CedarBuilders, CedarJsonWriters, CedarWriters, JsonTemplateFieldWriter, TextField } from 'cedar-model-typescript-library';
 
-const field: TextField = TextField.buildEmptyWithDefaultValues();
+const field: TextField = CedarBuilders.textFieldBuilder().build();
 
-const writers: CedarJSONWriters = CedarWriters.json().getStrict();
-const jsonWriter: JSONTemplateFieldWriter = writers.getJSONFieldWriterForField(field);
+const writers: CedarJsonWriters = CedarWriters.json().getStrict();
+const jsonWriter: JsonTemplateFieldWriter = writers.getFieldWriterForField(field);
 
 const fieldSerialized = jsonWriter.getAsJsonString(field);
-console.log('Serialized field as JSON string, length  : ' + fieldSerialized.length);
+console.log('Serialized field as Json string, length  : ' + fieldSerialized.length);
 console.log(fieldSerialized);

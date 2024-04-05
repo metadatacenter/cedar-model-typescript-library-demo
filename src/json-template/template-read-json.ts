@@ -1,23 +1,23 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { CedarJSONWriters, JSONTemplateReader, RoundTrip } from 'cedar-model-typescript-library';
+import { CedarJsonWriters, JsonTemplateReader, RoundTrip } from 'cedar-model-typescript-library';
 import { CedarWriters } from 'cedar-model-typescript-library';
-import { JSONTemplateWriter } from 'cedar-model-typescript-library';
+import { JsonTemplateWriter } from 'cedar-model-typescript-library';
 
 const filePath = path.join(__dirname, './template.json');
 const templateSource = fs.readFileSync(filePath, 'utf8');
 
-const reader: JSONTemplateReader = JSONTemplateReader.getStrict();
+const reader: JsonTemplateReader = JsonTemplateReader.getStrict();
 const jsonTemplateReaderResult = reader.readFromString(templateSource);
 console.log('Parsing error count                           : ' + jsonTemplateReaderResult.parsingResult.getBlueprintComparisonErrorCount());
 const template = jsonTemplateReaderResult.template;
 
-const writers: CedarJSONWriters = CedarWriters.json().getStrict();
-const jsonWriter: JSONTemplateWriter = writers.getJSONTemplateWriter();
+const writers: CedarJsonWriters = CedarWriters.json().getStrict();
+const jsonWriter: JsonTemplateWriter = writers.getTemplateWriter();
 
 const templateReSerialized = jsonWriter.getAsJsonString(template);
-console.log('Original template as JSON string, length      : ' + templateSource.length);
-console.log('ReSerialized template as JSON string, length  : ' + templateReSerialized.length);
+console.log('Original template as Json string, length      : ' + templateSource.length);
+console.log('ReSerialized template as Json string, length  : ' + templateReSerialized.length);
 
 const compareResult = RoundTrip.compare(jsonTemplateReaderResult, jsonWriter);
 console.log('RoundTrip comparison difference count (exp. 3): ', compareResult.getBlueprintComparisonErrorCount());

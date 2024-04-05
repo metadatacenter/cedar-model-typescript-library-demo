@@ -3,31 +3,31 @@ import * as fs from 'fs';
 import {
   AbstractArtifact,
   CedarArtifactType,
-  CedarJSONReaders,
-  CedarJSONWriters,
+  CedarJsonReaders,
+  CedarJsonWriters,
   CedarReaders,
   CedarWriters,
-  JSONAbstractArtifactReader,
-  JSONAbstractArtifactWriter,
-  JSONArtifactReaderResult,
+  JsonAbstractArtifactReader,
+  JsonAbstractArtifactWriter,
+  JsonArtifactReaderResult,
   RoundTrip,
 } from 'cedar-model-typescript-library';
 
 const filePath = path.join(process.cwd(), './template.json');
 const artifactSource = fs.readFileSync(filePath, 'utf8');
 
-const readers: CedarJSONReaders = CedarReaders.json().getStrict();
+const readers: CedarJsonReaders = CedarReaders.json().getStrict();
 const cedarArtifactType: CedarArtifactType = CedarReaders.json().detectArtifactType(artifactSource);
-const artifactReader: JSONAbstractArtifactReader = readers.getReaderForArtifactType(cedarArtifactType);
+const artifactReader: JsonAbstractArtifactReader = readers.getReaderForArtifactType(cedarArtifactType);
 
-const jsonArtifactReaderResult: JSONArtifactReaderResult = artifactReader.readFromString(artifactSource);
+const jsonArtifactReaderResult: JsonArtifactReaderResult = artifactReader.readFromString(artifactSource);
 console.log('Parsing error count:', jsonArtifactReaderResult.parsingResult.getBlueprintComparisonErrorCount());
 console.log('Parsing warning count:', jsonArtifactReaderResult.parsingResult.getBlueprintComparisonWarningCount());
 
 const artifact: AbstractArtifact = jsonArtifactReaderResult.artifact;
 
-const writers: CedarJSONWriters = CedarWriters.json().getStrict();
-const jsonWriter: JSONAbstractArtifactWriter = writers.getJSONWriterForArtifact(artifact);
+const writers: CedarJsonWriters = CedarWriters.json().getStrict();
+const jsonWriter: JsonAbstractArtifactWriter = writers.getWriterForArtifact(artifact);
 
 const artifactReSerialized = jsonWriter.getAsJsonString(artifact);
 

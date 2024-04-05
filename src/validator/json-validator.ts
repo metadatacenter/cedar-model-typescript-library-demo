@@ -3,12 +3,12 @@ import * as fs from 'fs';
 import {
   AbstractArtifact,
   CedarArtifactType,
-  CedarJSONReaders,
-  CedarJSONWriters,
+  CedarJsonReaders,
+  CedarJsonWriters,
   CedarReaders,
   CedarWriters,
-  JSONAbstractArtifactReader,
-  JSONAbstractArtifactWriter,
+  JsonAbstractArtifactReader,
+  JsonAbstractArtifactWriter,
   RoundTrip,
 } from 'cedar-model-typescript-library';
 
@@ -22,9 +22,9 @@ const filePath = path.join(process.cwd(), process.argv[2]);
 console.log('Loading file:       ' + filePath);
 const artifactSource = fs.readFileSync(filePath, 'utf8');
 
-const readers: CedarJSONReaders = CedarReaders.json().getStrict();
+const readers: CedarJsonReaders = CedarReaders.json().getStrict();
 const cedarArtifactType: CedarArtifactType = CedarReaders.json().detectArtifactType(artifactSource);
-const artifactReader: JSONAbstractArtifactReader = readers.getReaderForArtifactType(cedarArtifactType);
+const artifactReader: JsonAbstractArtifactReader = readers.getReaderForArtifactType(cedarArtifactType);
 
 const jsonArtifactReaderResult = artifactReader.readFromString(artifactSource);
 console.log('Parsing error count                           : ' + jsonArtifactReaderResult.parsingResult.getBlueprintComparisonErrorCount());
@@ -33,12 +33,12 @@ console.log(
 );
 const artifact: AbstractArtifact = jsonArtifactReaderResult.artifact;
 
-const writers: CedarJSONWriters = CedarWriters.json().getStrict();
-const jsonWriter: JSONAbstractArtifactWriter = writers.getJSONWriterForArtifact(artifact);
+const writers: CedarJsonWriters = CedarWriters.json().getStrict();
+const jsonWriter: JsonAbstractArtifactWriter = writers.getWriterForArtifact(artifact);
 
 const artifactReSerialized = jsonWriter.getAsJsonString(artifact);
-console.log('Original template as JSON string, length      : ' + artifactSource.length);
-console.log('ReSerialized template as JSON string, length  : ' + artifactReSerialized.length);
+console.log('Original template as Json string, length      : ' + artifactSource.length);
+console.log('ReSerialized template as Json string, length  : ' + artifactReSerialized.length);
 
 const compareResult = RoundTrip.compare(artifactSource, artifactReSerialized);
 console.log('RoundTrip comparison difference error count   : ', compareResult.getBlueprintComparisonErrorCount());

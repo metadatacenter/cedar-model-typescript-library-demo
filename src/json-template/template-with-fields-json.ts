@@ -1,9 +1,9 @@
 import {
   CedarBuilders,
-  CedarJSONWriters,
+  CedarJsonWriters,
   CedarWriters,
-  ISODate,
-  JSONTemplateWriter,
+  IsoDate,
+  JsonTemplateWriter,
   SchemaVersion,
   Template,
   TemplateBuilder,
@@ -11,7 +11,7 @@ import {
   TextFieldBuilder,
 } from 'cedar-model-typescript-library';
 
-const now = ISODate.now();
+const now = IsoDate.now();
 
 const textFieldBuilder: TextFieldBuilder = CedarBuilders.textFieldBuilder();
 const textField: TextField = textFieldBuilder
@@ -24,7 +24,7 @@ const textField: TextField = textFieldBuilder
   .withLastUpdatedOn(now)
   .withModifiedBy('https://metadatacenter.org/users/c7dcc3ca-55fe-4ca8-b448-ab110bfe4c99')
   .withVersion('0.0.2')
-  .withBiboStatus('bibo:published')
+  .withStatus('bibo:published')
   .withSchemaName('Schema nam of this template')
   .withSchemaDescription('Schema description of the template')
   .withPreferredLabel('Preferred label')
@@ -56,9 +56,9 @@ const template: Template = templateBuilder
   .addChild(textField, textFieldDeployment)
   .build();
 
-const writers: CedarJSONWriters = CedarWriters.json().getStrict();
-const jsonWriter: JSONTemplateWriter = writers.getJSONTemplateWriter();
+const writers: CedarJsonWriters = CedarWriters.json().getStrict();
+const jsonWriter: JsonTemplateWriter = writers.getTemplateWriter();
 
 const templateSerialized = jsonWriter.getAsJsonString(template);
-console.log('Serialized template as JSON string, length  : ' + templateSerialized.length);
+console.log('Serialized template as Json string, length  : ' + templateSerialized.length);
 console.log(templateSerialized);
