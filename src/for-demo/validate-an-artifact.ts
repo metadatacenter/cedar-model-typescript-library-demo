@@ -13,7 +13,7 @@ import {
   RoundTrip,
 } from 'cedar-model-typescript-library';
 
-const filePath = path.join(process.cwd(), './template.json');
+const filePath = path.join(process.cwd(), './src/for-demo/template.json');
 const artifactSource = fs.readFileSync(filePath, 'utf8');
 
 const readers: CedarJsonReaders = CedarReaders.json().getStrict();
