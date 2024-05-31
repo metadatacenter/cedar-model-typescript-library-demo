@@ -40,5 +40,6 @@
     "dist"
   ],
   "dependencies": {
+    "cedar-model-typescript-library": "^0.2.0"
   }
 }
