@@ -31,7 +31,6 @@ const field: TextField = builder
   .withMinLength(10)
   .withMaxLength(100)
   .withRegex('regex')
-  .withValueRecommendationEnabled(true)
   .build();
 
 const writers: CedarJsonWriters = CedarWriters.json().getStrict();

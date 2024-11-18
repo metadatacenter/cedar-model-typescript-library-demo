@@ -33,7 +33,6 @@ const textField: TextField = textFieldBuilder
   .withMinLength(10)
   .withMaxLength(100)
   .withRegex('regex')
-  .withValueRecommendationEnabled(true)
   .build();
 
 const textFieldDeploymentBuilder = textField
@@ -45,6 +44,7 @@ const textFieldDeploymentBuilder = textField
   .withMinItems(0)
   .withMaxItems(123)
   .withRequiredValue(true)
+  .withValueRecommendationEnabled(true)
   .withHidden(true);
 const textFieldDeployment = textFieldDeploymentBuilder.build();
 
