@@ -1,4 +1,9 @@
-# CEDAR Model Typescript Library Demo
+# CEDAR Model TypeScript Library Demo
+
+This demo follows the CEDAR platform release version and is released with the other platform
+repositories. Its stable package is published to the CEDAR Nexus npm registry. The
+`cedar-model-typescript-library` dependency itself is versioned and published independently on
+npmjs.
 
 ## How to install with the library from npmjs
 ```shell

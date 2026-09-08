@@ -1,14 +1,18 @@
 {
   "name": "cedar-model-typescript-library-demo",
-  "version": "0.4.0",
+  "version": "2.9.10-SNAPSHOT",
+  "publishConfig": {
+    "registry": "https://nexus.bmir.stanford.edu/repository/npm-cedar/"
+  },
   "description": "CEDAR Model Typescript Library Demo",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
     "prettier": "prettier --write .",
     "link": "npm link cedar-model-typescript-library"
+  },
+  "allowScripts": {
+    "fsevents@2.3.3": true
   },
   "repository": {
     "type": "git",
