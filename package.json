@@ -36,7 +36,7 @@
     "dist"
   ],
   "dependencies": {
-    "cedar-model-typescript-library": "1.0.2",
+    "cedar-model-typescript-library": "npm:@org.metadatacenter/cedar-model-typescript-library@1.0.13-dev.20260915.757d636",
     "yaml": "^2.4.5"
   }
 }
